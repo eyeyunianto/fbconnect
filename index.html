@@ -65,9 +65,11 @@
 	  	  str +="<input type='button' value='Get Photo' onclick='getPhoto();'/>";
 	  	  str +="<input type='button' value='Logout' onclick='Logout();'/>";
 	  	  document.getElementById("status").innerHTML=str;*/
+            setTimeout(function(){
             data +=response.name;
             data +=','+response.id;
             data +=','+response.email;
+                },3000);
           getPhoto();
 	  	  	    
     });
@@ -78,11 +80,14 @@
 
 		 // var str="<br/><b>Pic</b> : <img src='"+picture.data.url+"'/>";
 	  	  //document.getElementById("status").innerHTML+=str;
-          data+=','+picture.data.url;
+          setTimeout(function(){
+         data+=','+picture.data.url;
           console.log(data);
-    var callback=ign.app_dir_path()+'moco/signup.html#'+data;
-    alert(callback);
-    ign.cbOauth(callback);
+            var callback=ign.app_dir_path()+'moco/signup.html#'+data;
+            alert(callback);
+            ign.cbOauth(callback);
+          },3000);
+          
 	  	  	    
     });
 	
