@@ -4,7 +4,7 @@
     <title>Facebook - Moco</title>
     <script src="//connect.facebook.net/en_US/all.js"></script>
 <script>
-    var res = Array();
+    //var res = Array();
   window.fbAsyncInit = function() {
     FB.init({
       appId      : '1444031252476388', // App ID
@@ -14,7 +14,7 @@
       xfbml      : true  // parse XFBML
     });
     
-    
+    var data='';
 	FB.Event.subscribe('auth.authResponseChange', function(response) 
 	{
  	 if (response.status === 'connected') 
@@ -55,7 +55,7 @@
 	}
 
   function getUserInfo() {
-	    FB.api('/me', function(data) {
+	    FB.api('/me', function(response) {
 
 	 /* var str="<b>Name</b> : "+response.name+"<br>";
 	  	  str +="<b>Link: </b>"+response.link+"<br>";
@@ -65,9 +65,9 @@
 	  	  str +="<input type='button' value='Get Photo' onclick='getPhoto();'/>";
 	  	  str +="<input type='button' value='Logout' onclick='Logout();'/>";
 	  	  document.getElementById("status").innerHTML=str;*/
-          res.push(data.name);
-          res.push(data.id);
-          res.push(data.email);
+            data +=response.name;
+            data +=','+response.id;
+            data +=','+response.email;
           getPhoto();
 	  	  	    
     });
@@ -78,7 +78,7 @@
 
 		 // var str="<br/><b>Pic</b> : <img src='"+picture.data.url+"'/>";
 	  	  //document.getElementById("status").innerHTML+=str;
-          res.push(picture.data.url);
+          data+=','+picture.data.url;
 	  	  	    
     });
 	
@@ -114,7 +114,8 @@
     
     getUserInfo();
     console.log(res);
-    var callback=ign.app_dir_path()+'moco/signup.html';
+    var callback=ign.app_dir_path()+'moco/signup.html#'+data;
+    alert(callback);
    // ign.cbOauth(callback);
 </script>
 </head>
