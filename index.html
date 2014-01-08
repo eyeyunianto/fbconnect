@@ -58,19 +58,19 @@
   function getUserInfo() {
 	    FB.api('/me', function(response) {
 
-	 /*var str="<b>Name</b> : "+response.name+"<br>";
+	 var str="<b>Name</b> : "+response.name+"<br>";
 	  	  str +="<b>Link: </b>"+response.link+"<br>";
 	  	  str +="<b>Username:</b> "+response.username+"<br>";
 	  	  str +="<b>id: </b>"+response.id+"<br>";
 	  	  str +="<b>Email:</b> "+response.email+"<br>";
 	  	  str +="<input type='button' value='Get Photo' onclick='getPhoto();'/>";
-	  	  str +="<input type='button' value='Logout' onclick='Logout();'/>";*/
+	  	  str +="<input type='button' value='Logout' onclick='Logout();'/>";
 	  	  document.getElementById("status").innerHTML=str;
-         //setTimeout(function(){
+         setTimeout(function(){
             data +=response.name;
             data +=','+response.id;
             data +=','+response.email;
-                //},3000);
+                },3000);
             console.log(data);
           getPhoto();
 	  	  	    
