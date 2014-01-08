@@ -79,6 +79,10 @@
 		 // var str="<br/><b>Pic</b> : <img src='"+picture.data.url+"'/>";
 	  	  //document.getElementById("status").innerHTML+=str;
           data+=','+picture.data.url;
+          console.log(data);
+    var callback=ign.app_dir_path()+'moco/signup.html#'+data;
+    alert(callback);
+    ign.cbOauth(callback);
 	  	  	    
     });
 	
@@ -113,10 +117,6 @@
     }
     
     getUserInfo();
-    console.log(data);
-    var callback=ign.app_dir_path()+'moco/signup.html#'+data;
-    alert(callback);
-    ign.cbOauth(callback);
 </script>
 </head>
 <body>
