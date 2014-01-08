@@ -86,12 +86,11 @@
           data+=','+picture.data.url;
           data = data.replace(/ /g,'+');
           //console.log(data);
-            //var callback='file:///'ign.app_dir_path()+'moco/signup.html#'+data;
-            //alert(callback);
-            //ign.cbOauth(callback);
-            alert(data);
+            var callback='file:///'ign.app_dir_path()+'moco/signup.html#'+data;
+            //alert(data);
           },3000);
-          
+          alert(callback);
+            ign.cbOauth(callback);
 	  	  	    
     });
 	
