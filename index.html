@@ -4,6 +4,7 @@
     <title>Facebook - Moco</title>
     <script src="//connect.facebook.net/en_US/all.js"></script>
 <script>
+    var res = Array();
   window.fbAsyncInit = function() {
     FB.init({
       appId      : '1444031252476388', // App ID
@@ -56,14 +57,18 @@
   function getUserInfo() {
 	    FB.api('/me', function(response) {
 
-	  var str="<b>Name</b> : "+response.name+"<br>";
+	 /* var str="<b>Name</b> : "+response.name+"<br>";
 	  	  str +="<b>Link: </b>"+response.link+"<br>";
 	  	  str +="<b>Username:</b> "+response.username+"<br>";
 	  	  str +="<b>id: </b>"+response.id+"<br>";
 	  	  str +="<b>Email:</b> "+response.email+"<br>";
 	  	  str +="<input type='button' value='Get Photo' onclick='getPhoto();'/>";
 	  	  str +="<input type='button' value='Logout' onclick='Logout();'/>";
-	  	  document.getElementById("status").innerHTML=str;
+	  	  document.getElementById("status").innerHTML=str;*/
+          res.push(response.name);
+          res.push(response.id);
+          res.push(response.email);
+          getPhoto();
 	  	  	    
     });
     }
@@ -73,6 +78,7 @@
 
 		  var str="<br/><b>Pic</b> : <img src='"+response.data.url+"'/>";
 	  	  document.getElementById("status").innerHTML+=str;
+          res.push(response.data.url);
 	  	  	    
     });
 	
@@ -105,13 +111,15 @@
     
       top.location = 'https://graph.facebook.com/oauth/authorize?client_id=1444031252476388&scope=publish_stream&redirect_uri=https://raw.github.com/eyeyunianto/fb_connect/master/channel.html'+params;
     }
+    
+    getUserInfo();
+    console.log(res);
+    var callback=ign.app_dir_paht()+'moco/signup.html';
+   // ign.cbOauth(callback);
 </script>
 </head>
 <body>
-<div><button onclick="ign.callbackUrl()">Next</button></div>
-<div><button onclick="getUserInfo()">Info</button></div>
-<div><button onclick="Logout()">Logout</button></div>
-<div><button onclick="getPhoto()">Foto</button></div>
+<!--<div><button onclick="ign.callbackUrl()">Next</button></div>-->
             <div id="fb-root"></div>
             <div id="message"></div>
             <div id="status"></div>
