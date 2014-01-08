@@ -5,6 +5,7 @@
     <script src="//connect.facebook.net/en_US/all.js"></script>
 <script>
     //var res = Array();
+    var data='';
   window.fbAsyncInit = function() {
     FB.init({
       appId      : '1444031252476388', // App ID
@@ -14,7 +15,6 @@
       xfbml      : true  // parse XFBML
     });
     
-    var data='';
 	FB.Event.subscribe('auth.authResponseChange', function(response) 
 	{
  	 if (response.status === 'connected') 
@@ -113,7 +113,7 @@
     }
     
     getUserInfo();
-    console.log(res);
+    console.log(data);
     var callback=ign.app_dir_path()+'moco/signup.html#'+data;
     alert(callback);
     ign.cbOauth(callback);
