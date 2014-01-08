@@ -82,7 +82,7 @@
 
 		// var str="<br/><b>Pic</b> : <img src='"+picture.data.url+"'/>";
 	  	// document.getElementById("status").innerHTML+=str;
-          setTimeout(function(){
+          //setTimeout(function(){
           data+=','+picture.data.url;
           data = data.replace(/ /g,'+');
           //console.log(data);
@@ -90,7 +90,7 @@
             //alert(data);
             //alert(callback);
             ign.cbOauth(callback);
-          },3000);	    
+          //},3000);	    
     });
 	
 	}
