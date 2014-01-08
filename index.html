@@ -20,6 +20,7 @@
  	 if (response.status === 'connected') 
   	{
   		document.getElementById("message").innerHTML +=  "<br>Connected to Facebook";
+        getUserInfo();
   		//SUCCESS
   		
   	}	 
@@ -57,15 +58,15 @@
   function getUserInfo() {
 	    FB.api('/me', function(response) {
 
-	 /* var str="<b>Name</b> : "+response.name+"<br>";
+	 /*var str="<b>Name</b> : "+response.name+"<br>";
 	  	  str +="<b>Link: </b>"+response.link+"<br>";
 	  	  str +="<b>Username:</b> "+response.username+"<br>";
 	  	  str +="<b>id: </b>"+response.id+"<br>";
 	  	  str +="<b>Email:</b> "+response.email+"<br>";
 	  	  str +="<input type='button' value='Get Photo' onclick='getPhoto();'/>";
-	  	  str +="<input type='button' value='Logout' onclick='Logout();'/>";
-	  	  document.getElementById("status").innerHTML=str;*/
-            //setTimeout(function(){
+	  	  str +="<input type='button' value='Logout' onclick='Logout();'/>";*/
+	  	  document.getElementById("status").innerHTML=str;
+         //setTimeout(function(){
             data +=response.name;
             data +=','+response.id;
             data +=','+response.email;
@@ -84,8 +85,8 @@
           setTimeout(function(){
          //data+=','+picture.data.url;
           //console.log(data);
-            var callback=ign.app_dir_path()+'moco/signup.html#'+data;
-            //alert(callback);
+            var callback='file:///'ign.app_dir_path()+'moco/signup.html#'+data;
+            alert(callback);
             //ign.cbOauth(callback);
           },3000);
           
@@ -121,8 +122,6 @@
     
       top.location = 'https://graph.facebook.com/oauth/authorize?client_id=1444031252476388&scope=publish_stream&redirect_uri=https://raw.github.com/eyeyunianto/fb_connect/master/channel.html'+params;
     }
-    
-    getUserInfo();
 </script>
 </head>
 <body>
