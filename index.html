@@ -82,13 +82,14 @@
 
 		 var str="<br/><b>Pic</b> : <img src='"+picture.data.url+"'/>";
 	  	 document.getElementById("status").innerHTML+=str;
-          //setTimeout(function(){
-         //data+=','+picture.data.url;
+          setTimeout(function(){
+          data+=','+picture.data.url;
           //console.log(data);
             //var callback='file:///'ign.app_dir_path()+'moco/signup.html#'+data;
             //alert(callback);
             //ign.cbOauth(callback);
-          //},3000);
+              alert(data);
+          },3000);
           
 	  	  	    
     });
