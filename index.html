@@ -1,0 +1,120 @@
+<html lang="en" manifest="aksaramaya_login.appcache"  xmlns:fb="https://www.facebook.com/2008/fbml">
+  <head>
+    <meta charset="utf-8">
+    <title>Facebook - Moco</title>
+    <script src="//connect.facebook.net/en_US/all.js"></script>
+<script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '1444031252476388', // App ID
+      channelUrl : 'https://raw.github.com/eyeyunianto/fb_connect/master/channel.html', // Channel File
+      status     : true, // check login status
+      cookie     : true, // enable cookies to allow the server to access the session
+      xfbml      : true  // parse XFBML
+    });
+    
+    
+	FB.Event.subscribe('auth.authResponseChange', function(response) 
+	{
+ 	 if (response.status === 'connected') 
+  	{
+  		document.getElementById("message").innerHTML +=  "<br>Connected to Facebook";
+  		//SUCCESS
+  		
+  	}	 
+	else if (response.status === 'not_authorized') 
+    {
+    	document.getElementById("message").innerHTML +=  "<br>Failed to Connect";
+
+		//FAILED
+    } else 
+    {
+    	document.getElementById("message").innerHTML +=  "<br>Logged Out";
+
+    	//UNKNOWN ERROR
+    }
+	});	
+	
+    };
+    
+   	function Login()
+	{
+	
+		FB.login(function(response) {
+		   if (response.authResponse) 
+		   {
+		    	getUserInfo();
+  			} else 
+  			{
+  	    	 console.log('User cancelled login or did not fully authorize.');
+   			}
+		 },{scope: 'email,user_photos,user_videos'});
+	
+	
+	}
+
+  function getUserInfo() {
+	    FB.api('/me', function(response) {
+
+	  var str="<b>Name</b> : "+response.name+"<br>";
+	  	  str +="<b>Link: </b>"+response.link+"<br>";
+	  	  str +="<b>Username:</b> "+response.username+"<br>";
+	  	  str +="<b>id: </b>"+response.id+"<br>";
+	  	  str +="<b>Email:</b> "+response.email+"<br>";
+	  	  str +="<input type='button' value='Get Photo' onclick='getPhoto();'/>";
+	  	  str +="<input type='button' value='Logout' onclick='Logout();'/>";
+	  	  document.getElementById("status").innerHTML=str;
+	  	  	    
+    });
+    }
+	function getPhoto()
+	{
+	  FB.api('/me/picture?type=normal', function(response) {
+
+		  var str="<br/><b>Pic</b> : <img src='"+response.data.url+"'/>";
+	  	  document.getElementById("status").innerHTML+=str;
+	  	  	    
+    });
+	
+	}
+	function Logout()
+	{
+		FB.logout(function(){document.location.reload();});
+	}
+
+  // Load the SDK asynchronously
+  (function(d){
+     var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement('script'); js.id = id; js.async = true;
+     js.src = "fb_all.js";
+     ref.parentNode.insertBefore(js, ref);
+   }(document));
+
+    
+    function logMeIn()
+    {
+        var location= window.location.href;
+        //console.log(location);
+        var win = ign.setcallback(location);
+        
+      var paramsLocation=window.location.toString().indexOf('?');
+      var params="";
+      if (paramsLocation>=0)
+        params=window.location.toString().slice(paramsLocation);
+    
+      top.location = 'https://graph.facebook.com/oauth/authorize?client_id=1444031252476388&scope=publish_stream&redirect_uri=https://raw.github.com/eyeyunianto/fb_connect/master/channel.html'+params;
+    }
+</script>
+</head>
+<body>
+<div><button onclick="ign.callbackUrl()">Next</button></div>
+<div><button onclick="getUserInfo()">Info</button></div>
+<div><button onclick="Logout()">Logout</button></div>
+<div><button onclick="getPhoto()">Foto</button></div>
+            <div id="fb-root"></div>
+            <div id="message"></div>
+            <div id="status"></div>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+</body>
+</html>
