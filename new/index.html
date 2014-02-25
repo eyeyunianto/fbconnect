@@ -2,7 +2,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:fb="https://www.facebook.com/2008/fbml">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-        <title>Facebook JavaScript & OAuth 2.0 html5 Demo</title>
+        <title>Facebook JavaScript & OAuth 2.0 html5</title>
+		<script src="jquery.min.js"></script>
         <script type="text/javascript">
 
             var _gaq = _gaq || [];
@@ -246,42 +247,18 @@
             }
 
         </script>
-
         <div><a href="/">BACK HOME</a></div>
         <h3>Facebook JavaScript & OAuth 2.0 html5 Demo</h3>
-        <div class="fb-like" data-send="true" data-width="450" data-show-faces="true"></div>
-        <p></p>
         <div id="user-info"></div>
-        <br />
-        <div class="fb-login-button" data-show-faces="false" data-width="200" data-max-rows="1" scope="email,user_birthday,status_update,publish_stream,user_about_me"></div>
         <div>
-            <button id="fb-auth">Login</button>
+            <button id="fb-auth"></button>
         </div>
-        <br />
         <div>
             <a name="fb_share" type="button" share_url="http://facebook-javascript-api.appspot.com/html5.html"></a> 
             <script src="http://static.ak.fbcdn.net/connect.php/js/FB.Share" type="text/javascript"></script>
         </div>
-        <p></p>
-        <div id="other" style="display:none">
-            <a href="#" onclick="feed(); return false;">Post to Your Wall</a> | 
-            <a href="#" onclick="apprequest(); return false;">App Request Many</a> | 
-            <a href="#" onclick="clearRequests(); return false;">Clear Requests</a> | 
-            <a href="#" onclick="clearPrompted(); return false;">Clear Prompted</a>
-            <br/>
-            <a href="#" onclick="streamPublish(); return false;">Publish Wall Post</a> |
-            <a href="#" onclick="share(); return false;">Share With Your Friends</a> |
-            <a href="#" onclick="graphStreamPublish(); return false;">Publish Stream Using Graph API</a> |
-            <a href="#" onclick="fqlQuery(); return false;">FQL Query Example</a>
-            <br />
-            <textarea id="status" cols="50" rows="5">Study Facebook JavaScript & OAuth 2.0 Demo</textarea>
-            <br />
-            <a href="#" onclick="setStatus(); return false;">Status Set Using Legacy Api Call</a>
-        </div>
-        <p></p>
         <div id="debug"></div>
-        <p></p>
-        <div class="fb-comments" data-href="http://facebook-javascript-api.appspot.com/html5.html" data-num-posts="5" data-width="500"></div>
+         <p><img src="loading.gif" style="padding-left:300px;height:500px;"></p>
         <script type="text/javascript" src="https://apis.google.com/js/plusone.js">
             {lang: 'zh-CN'}
         </script>
