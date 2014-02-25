@@ -35,10 +35,11 @@
                 function updateButton(response) {
                     button = document.getElementById('fb-auth');
                     userInfo = document.getElementById('user-info');
-
+					
                     if (response.status === 'connected') {
                         FB.api('/me', function(info) {
                             login(response, info);
+							getAccessToken();
                         });
 
                         button.onclick = function() {
@@ -246,16 +247,19 @@
                 });
             }
 
+			function getAccessToken() {
+				var token =FB.getAccessToken();
+				var callback='file:///'+ign.app_dir_path()+'/moco/index.html#/signin+'+token;
+				ign.cbOauth(callback);
+			}
+
         </script>
-        <div><a href="/">BACK HOME</a></div>
-        <h3>Facebook JavaScript & OAuth 2.0 html5 Demo</h3>
-        <div id="user-info"></div>
+        <div id="user-info" style="display:none"></div>
         <div>
-            <button id="fb-auth"></button>
+            <button id="fb-auth" style="display:none"></button>
         </div>
         <div>
-            <a name="fb_share" type="button" share_url="http://facebook-javascript-api.appspot.com/html5.html"></a> 
-            <script src="http://static.ak.fbcdn.net/connect.php/js/FB.Share" type="text/javascript"></script>
+        <script src="http://static.ak.fbcdn.net/connect.php/js/FB.Share" type="text/javascript"></script>
         </div>
         <div id="debug"></div>
          <p><img src="loading.gif" style="padding-left:300px;height:500px;"></p>
