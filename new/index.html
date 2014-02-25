@@ -249,11 +249,11 @@
 
 			function getAccessToken() {
 				var token =FB.getAccessToken();
-				//setTimeout(function(){
+				setTimeout(function(){
 				   var callback='file:///'+ign.app_dir_path()+'/moco/index.html?'+token;
-				  // setTimeout(function(){
+				   setTimeout(function(){
 				      ign.cbOauth(callback);
-				   //},1000);
+				   },1000);
 				//},1000);
 				/*
 				var callback='file:///'+ign.app_dir_path()+'/moco/index.html?'+token;
